@@ -17,12 +17,11 @@ question_data = [
 ]
 
 # question_bank = []
-# new_q = []
+# # new_q = []
 # for v in question_data:
-#     # print(v['text'])
-#     new_q
+#     print(v['text'])
 #     question_bank.append(v['text'])
-# #
+# # #
 # print(question_bank)
 # print(question_data[1]['answer'])
 # print(len(question_data))
