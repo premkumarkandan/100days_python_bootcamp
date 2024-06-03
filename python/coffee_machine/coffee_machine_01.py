@@ -80,14 +80,3 @@ while power:
             resource['Coffee'] -= drink[code]['coffee']
             resource['Milk'] -= drink[code]['milk']
             resource['Money'] += drink[code]['cost']
-
-
-
-
-
-
-
-
-
-
-
