@@ -1,13 +1,35 @@
-import colorgram
+from color import color_list
+import turtle
+from turtle import Turtle, Screen
+import random
 
-colors = colorgram.extract('images.jpg', 25)
-rgb_colors = []
-for color in colors:
-    rgb_colors.append(tuple(color.rgb))
+tom = Turtle()
+tom.speed("fastest")
+turtle.colormode(255)
+x0 = -250
+y0 = -250
+step = 0
+tom.penup()
+tom.goto(x0, y0)
+tom.dot(20, random.choice(color_list))
 
-print(rgb_colors)
 
-color_list = [(229, 228, 226), (225, 223, 224), (199, 175, 117), (124, 36, 24), (210, 221, 213), (168, 106, 57),
-              (222, 224, 227), (186, 158, 53), (6, 57, 83), (109, 67, 85), (113, 161, 175), (22, 122, 174),
-              (64, 153, 138), (39, 36, 36), (76, 40, 48), (9, 67, 47), (90, 141, 53), (181, 96, 79), (132, 40, 42),
-              (210, 200, 151), (141, 171, 155), (179, 201, 186), (172, 153, 159), (212, 183, 177), (176, 198, 203)]
+def random_color():
+    color = random.choice(color_list)
+    return color
+
+
+for _ in range(10):
+    tom.setpos(x0, y0+step)
+    for c_ in range(10):
+        tom.dot(20, random.choice(color_list))
+        tom.forward(50)
+    step += 50
+    # tom.goto(x0, y0+50)
+
+tom.ht()
+screen = Screen()
+screen.exitonclick()
+
+
+
