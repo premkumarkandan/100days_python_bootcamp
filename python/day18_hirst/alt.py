@@ -5,7 +5,7 @@ from random import choice
 # Initialization
 
 leo = Turtle()
-leo.shape("turtle")
+# leo.shape("turtle")
 my_screen = Screen()
 
 # Setting parameters
