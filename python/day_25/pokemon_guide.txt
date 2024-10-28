@@ -1,0 +1,101 @@
+# Importing pandas library
+import pandas as pd
+
+# Reading data from different file formats
+poke_df = pd.read_csv('pokemon_data.csv')         # CSV file
+poke_df_xlsx = pd.read_excel('pokemon_data.xlsx') # Excel file
+poke_df_txt = pd.read_csv('pokemon_data.txt', delimiter='\t') # Tab-delimited text file
+
+# Viewing data
+print(poke_df.tail(3))            # Display the last 3 rows of CSV file data
+print(poke_df_xlsx.head(10))      # Display the first 10 rows of Excel file data
+print(poke_df_txt)                # Display entire text file data
+
+# Basic Data Exploration
+print(poke_df.columns)            # Display column headers
+print(poke_df[['Type 1', 'HP', 'Name']][0:10])  # Display specific columns for first 10 rows
+
+# Reading rows with various methods
+print(poke_df.head(3))            # First 3 rows of the DataFrame
+print(poke_df.iloc[0:5, 1:4])     # Select rows 0-4 and columns 1-3 by position
+for index, row in poke_df.iterrows():          # Iterate through rows to access specific columns
+    print(index, row[['Name', 'Legendary']])
+print(poke_df.loc[poke_df['Legendary'] == False]) # Select rows where 'Legendary' is False
+
+# Sorting Data
+print(poke_df.sort_values(['Type 1', 'Speed'], ascending=[0, 1]))  # Sort by 'Type 1' (descending) and 'Speed' (ascending)
+
+# Creating a New Column with Calculated Data
+poke_df['Total'] = poke_df.iloc[:, 4:10].sum(axis=1) # Sum stats from columns 4 to 9 for each row to create 'Total' column
+
+# Reordering Columns
+cols = list(poke_df.columns)
+poke_df = poke_df[cols[0:4] + [cols[-1]] + cols[4:12]]  # Place 'Total' column between columns 3 and 4
+print(poke_df.head(3))
+print(poke_df['Total'])
+
+# Applying Multiple Conditions to Filter Data
+# Example: Filter where 'Type 1' is 'Grass', 'Type 2' is 'Poison', and 'HP' > 70
+filtered_df = poke_df.loc[(poke_df['Type 1'] == 'Grass') & (poke_df['Type 2'] == 'Poison') & (poke_df['HP'] > 70)]
+
+# Removing Rows Based on a Condition
+# Using ~ to exclude rows where 'Name' contains 'Mega'
+Modified_new = poke_df.loc[~poke_df['Name'].str.contains('Mega')]
+
+# Filtering with Regular Expressions (case-insensitive)
+# Select rows where 'Type 1' contains 'fire' or 'grass'
+poke_df.loc[poke_df['Type 1'].str.contains('fire|grass', flags=re.I, regex=True)]
+
+# Modifying Data Based on Conditions
+# Set 'Legendary' to True where 'Type 1' is 'Fire'
+poke_df.loc[poke_df['Type 1'] == 'Fire', 'Legendary'] = True
+
+# Set specific columns ('Generation' and 'Legendary') to 'Test_Value' where 'Total' > 500
+poke_df.loc[poke_df['Total'] > 500, ['Generation', 'Legendary']] = 'Test_Value'
+
+# Exporting Data to CSV
+Modified_new.to_csv('Modified.csv', index=False) # Save modified DataFrame to CSV without index
+Modified.reset_index(drop=True, inplace=True)    # Reset index and remove original index column
+print(Modified)                                  # Display the modified DataFrame
+
+# Save original DataFrame to CSV with tab separator
+poke_df.to_csv('Modified.csv', index=False, sep='\t')
+
+# Grouping and Aggregating Data
+# Group by 'Type 1' and calculate the mean, then sort by 'Defense' in descending order
+print(poke_df.groupby(['Type 1']).mean().sort_values('Defense', ascending=False))
+
+# Group by 'Type 1' and calculate the mean, then sort by 'HP' in descending order
+print(poke_df.groupby(['Type 1']).mean().sort_values('HP', ascending=False))
+
+# Reading Data in Chunks
+# Reading and printing data in chunks of 5 rows from a CSV file
+for chunk in pd.read_csv('modified.csv', chunksize=5):
+    print('CHUNK DF')
+    print(chunk)
+
+
+Explanation of Key Sections:
+
+    Reading Different File Formats: Demonstrates how to load data from CSV, Excel, and tab-delimited text files.
+
+    Data Exploration: Shows how to view specific parts of the data, including column headers, specific columns, and selected rows.
+
+    Sorting and Filtering:
+        Sorting by multiple columns.
+        Filtering using .loc[] with multiple conditions and regular expressions for case-insensitive matching.
+
+    Creating and Modifying Columns:
+        New Column (Total): Adds a column that’s the sum of specific columns.
+        Reordering Columns: Moves the Total column to a specific position in the DataFrame.
+
+    Removing Rows Based on Conditions: Uses ~ to exclude rows where a condition is met (e.g., Name contains "Mega").
+
+    Modifying Values Based on Conditions: Updates values conditionally, such as setting Legendary to True for specific types.
+
+    Exporting Data: Saves DataFrames to CSV files, with options for tab separation and omitting the index column.
+
+    Grouping and Aggregating:
+        Grouping by Type 1 and calculating the mean for each group, then sorting based on columns like Defense or HP.
+
+    Reading Data in Chunks: Shows how to load large datasets in smaller chunks for memory-efficient processing.
