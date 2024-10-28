@@ -31,28 +31,28 @@ poke_df = poke_df[cols[0:4] + [cols [-1]] + cols[4:12]]
 print(poke_df.head(3))
 print(poke_df['Total'])
 
-poke_df.loc[(poke_df['Type 1'] == 'Grass') & (poke_df['Type 2'] == 'Poison') & (poke_df['HP'] > 70)]
+#poke_df.loc[(poke_df['Type 1'] == 'Grass') & (poke_df['Type 2'] == 'Poison') & (poke_df['HP'] > 70)]
 
 # Remove a certain row entry based on a condition using ~
-Modified_new = Modified.loc[~poke_df['Name'].str.contains('Mega')]
+#Modified_new = Modified.loc[~poke_df['Name'].str.contains('Mega')]
 
-poke_df.loc[poke_df['Type 1'].str.contains('fire|grass', flags=re.I, regex=True)]
+#poke_df.loc[poke_df['Type 1'].str.contains('fire|grass', flags=re.I, regex=True)]
 
 
 # To modify contents of a df based on user defined conditions
-Modified = poke_df.loc[poke_df['Type 1'] == 'Fire', 'Legendary'] = True
+#Modified = poke_df.loc[poke_df['Type 1'] == 'Fire', 'Legendary'] = True
 poke_df.loc[poke_df['Total'] > 500, ['Generation', 'Legendary']] = 'Test_Value'
 
-Modified_new.to_csv('Modified.csv', index=False)
-Modified.reset_index(drop=True, inplace=True)
-print(Modified)
+#Modified_new.to_csv('Modified.csv', index=False)
+#Modified.reset_index(drop=True, inplace=True)
+#print(Modified)
 
 poke_df.to_csv('Modified.csv', index=False, sep='\t')
 
 poke_df.groupby(['Type 1']).mean().sort_values('Defense', ascending=False)
 poke_df.groupby(['Type 1']).mean().sort_values('HP', ascending=False)
 
-for poke_df in pd.read_csv('modified.csv', chunksize=5)
+for poke_df in pd.read_csv('modified.csv', chunksize=5):
     print('CHUNK DF')
     print(poke_df)
 
