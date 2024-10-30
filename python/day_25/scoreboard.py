@@ -10,20 +10,20 @@ class Scoreboard(Turtle):
 
     def __init__(self):
         super().__init__()
-        self.level = 0  # Initialize level to 1
+        self.score = 0  # Initialize level to 0
         self.penup()
         self.hideturtle()  # Hide the turtle as we don't need to see it
-        self.goto(-280, 260)  # Position the scoreboard at the top left
+        self.goto(-240, 240)  # Position the scoreboard at the top left
         self.update_scoreboard()  # Call function to display the initial score
 
     # Function to update the scoreboard with the current level
     def update_scoreboard(self):
         self.clear()  # Clear previous scoreboard to avoid overlap
-        self.write(f"Level: {self.level}", align="left", font=FONT)  # Write current level
+        self.write(f"Score: {self.score}", align="left", font=FONT)  # Write current level
 
     # Function to increase the level and update the scoreboard
     def increase_score(self):
-        self.level += 1  # Increase level by 1
+        self.score += 1  # Increase level by 1
         self.update_scoreboard()  # Refresh the scoreboard with the new level
 
     # Function to display "Game Over" message
