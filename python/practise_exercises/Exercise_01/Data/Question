@@ -1,0 +1,21 @@
+Task 1: Data Cleaning
+
+    Read the data from sales_data.csv into a Pandas DataFrame.
+    Check for missing values in each column and fill them with appropriate values. For example:
+        Fill missing values in Quantity and Price with 0.
+    Remove any rows where Total_Sales is 0 (if applicable).
+    Correct data types if necessary, ensuring that Date is a datetime type and Quantity, Price, and Total_Sales are numeric.
+
+Task 2: Data Manipulation
+
+    Add a new column Total_Cost that calculates Quantity * Price.
+    Correct any discrepancies between Total_Sales and Total_Cost, where Total_Sales may not match Quantity * Price.
+        Use Total_Cost values to overwrite incorrect values in Total_Sales.
+    Group data by Customer and Category to calculate the total sales amount each customer spent in each category.
+    Filter the data to show only transactions where Total_Sales is above 200.
+
+Task 3: Data Analysis
+
+    Find the top 3 products in terms of total sales.
+    Calculate the average quantity sold for each product category.
+    Determine the month with the highest sales and display the total sales amount for that month.

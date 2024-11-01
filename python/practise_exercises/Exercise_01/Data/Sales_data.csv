@@ -1,0 +1,9 @@
+Order_ID,Date,Customer,Category,Product,Quantity,Price,Total_Sales
+1,2023-01-15,John Doe,Apparel,T-Shirt,3,20.0,60.0
+2,2023-02-02,Jane Roe,Apparel,Jacket,1,100.0,100.0
+3,2023-02-15,John Doe,Electronics,Smartphone,2,500.0,1000.0
+4,2023-03-10,Alice,Electronics,Headphones,4,50.0,200.0
+5,2023-03-15,Bob,Apparel,T-Shirt,5,20.0,100.0
+6,2023-04-05,Jane Roe,Electronics,Laptop,1,800.0,800.0
+7,2023-05-10,Alice,Apparel,Jacket,2,100.0,200.0
+8,2023-06-20,John Doe,Electronics,Smartphone,3,500.0,1500.0
