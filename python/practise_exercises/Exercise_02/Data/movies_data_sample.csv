@@ -1,0 +1,6 @@
+Title,Genre,Director,Release_Date,Budget,Box_Office,Rating,Runtime
+Movie A,Action,Director X,2020-05-15,50.0,150,8.5,120
+Movie B,Drama,Director Y,2019-07-20,30.0,100,7.8,135
+Movie C,Action,Director X,2021-06-10,45.0,120,8.2,110
+Movie D,Comedy,Director Z,2018-08-25,20.0,60,,95
+Movie E,Drama,Director Y,2020-03-05,,0,6.5,130
